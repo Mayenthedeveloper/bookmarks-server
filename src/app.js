@@ -7,6 +7,7 @@ const { NODE_ENV } = require('./config')
 const { v4: uuid } = require("uuid");
 const bookmarksRouter = require('./bookmarks/bookmarks-router')
 const logger = require('./logger')
+const { bookmarks } = require('./store')
 
 const app = express()
 
@@ -20,17 +21,6 @@ app.use(cors())
 app.use(bookmarksRouter)
 
 
-
-app.use(function validateBearerToken(req, res, next) {
-  const apiToken = process.env.API_TOKEN
-  const authToken = req.get('Authorization')
-
-  if (!authToken || authToken.split(' ')[1] !== apiToken) {
-    logger.error(`Unauthorized request to path: ${req.path}`);
-    return res.status(401).json({ error: 'Unauthorized request' })
-  }
-  next()
-})
 
 app.get('/', (req, res) =>{
     res.send('bookmark server!')

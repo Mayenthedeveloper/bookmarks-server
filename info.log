@@ -5,3 +5,5 @@
 {"message":"Unauthorized request to path: /","level":"error"}
 {"message":"Bookmark with id 123 not found.","level":"error"}
 {"message":"Bookmark with id rating not found.","level":"error"}
+{"message":"Bookmark with id 123456 not found.","level":"error"}
+{"message":"Bookmark with id 2 not found.","level":"error"}
