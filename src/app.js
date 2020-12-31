@@ -8,7 +8,6 @@ const validateBearerToken = require('./validate-bearer-token')
 const errorHandler = require('./error-handler')
 const bookmarksRouter = require('./bookmarks/bookmarks-router')
 
-
 const app = express()
 
 app.use(morgan((NODE_ENV === 'production') ? 'tiny' : 'common', {
@@ -18,14 +17,12 @@ app.use(cors())
 app.use(helmet())
 app.use(validateBearerToken)
 
-app.use(bookmarksRouter)
+app.use('/api/bookmarks', bookmarksRouter)
 
-
-app.get('/', (req, res) =>{
-    res.send('bookmark server!')
+app.get('/', (req, res) => {
+  res.send('Hello, world!')
 })
 
 app.use(errorHandler)
-
 
 module.exports = app
